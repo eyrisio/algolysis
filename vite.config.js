@@ -8,4 +8,15 @@ export default defineConfig({
       languages: ["javascript", "python", "cpp", "java"],
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("monaco-editor")) {
+            return "monaco";
+          }
+        },
+      },
+    },
+  },
 });
